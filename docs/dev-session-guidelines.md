@@ -24,17 +24,17 @@ Development sessionの記録を残すことで、開発の流れと意思決定�
 ## File Naming Convention
 
 ```
-docs/dev-sessions/YYYY-MM-DD-session-topic.md
+docs/dev-sessions/YYYYMMDDhhmmss-session-topic.md
 ```
 
 **Date Format:**
-- Use `date +"%Y-%m-%d"` command to get correct date
-- Always verify the current date before creating session files
+- Use `TZ=Asia/Tokyo date +"%Y%m%d%H%M%S"` command to get current JST timestamp
+- Always verify the current timestamp before creating session files
 
 **Examples:**
-- `2025-06-12-project-initialization.md`
-- `2025-06-13-anilist-api-integration.md`
-- `2025-06-14-comparison-feature-implementation.md`
+- `20250612225623-project-initialization.md`
+- `20250613230000-anilist-api-integration.md`
+- `20250614230000-comparison-feature-implementation.md`
 
 ## Document Structure
 
@@ -44,7 +44,7 @@ docs/dev-sessions/YYYY-MM-DD-session-topic.md
 # 開発セッション: [セッションタイトル]
 
 **日時**: YYYY-MM-DD
-**時間**: [時間or区間]
+**時間**: hh:mm:ss (JST)
 **参加者**: User, Claude Code
 
 ## 概要

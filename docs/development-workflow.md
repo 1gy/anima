@@ -7,7 +7,7 @@ Claude Codeとの開発セッションにおける標準的なワークフロー
 ## Workflow Steps
 
 ### 1. Session Start
-- `date +"%Y-%m-%d"`で現在日付を確認
+- `TZ=Asia/Tokyo date +"%Y-%m-%d"`で現在日付を確認
 - セッションのトピック・目標を明確化
 
 ### 2. Development Phase
