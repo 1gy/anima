@@ -38,3 +38,6 @@ The workspace is currently minimal with no packages defined yet.
 
 For contributing guidelines and commit conventions:
 @CONTRIBUTING.md
+
+For development session recording guidelines:
+@docs/dev-session-guidelines.md

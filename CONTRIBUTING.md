@@ -67,3 +67,12 @@ Commit in **meaningful atomic units**.
 **Bad examples:**
 - Combine multiple features in one commit
 - Include unrelated fixes in the same commit
+
+## Development Session Recording
+
+Document development sessions with Claude Code for knowledge transfer and process transparency.
+
+- See [Development Session Guidelines](docs/dev-session-guidelines.md) for detailed rules
+- Record sessions at major milestones and after significant commits
+- Use format: `docs/dev-sessions/YYYY-MM-DD-session-topic.md`
+- Include conversation flow, key decisions, and technical notes
