@@ -41,3 +41,6 @@ For contributing guidelines and commit conventions:
 
 For development session recording guidelines:
 @docs/dev-session-guidelines.md
+
+For development workflow with Claude Code:
+@docs/development-workflow.md

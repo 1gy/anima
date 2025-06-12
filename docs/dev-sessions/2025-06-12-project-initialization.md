@@ -28,6 +28,12 @@
 - **Phase 2**: S/A/B/C/Dランクのティア表機能（ドラッグ&ドロップ対応）
 - **Phase 3**: 統合トップページ
 
+### Development Session Recording
+- **Recording System**: `docs/dev-sessions/`ディレクトリでセッション別管理
+- **File Format**: `YYYY-MM-DD-session-topic.md`形式
+- **Content Structure**: 日本語見出しで概要・決定事項・会話流れ・ファイル・次ステップ・技術メモ
+- **Date Management**: `date +"%Y-%m-%d"`コマンドで正確な日付取得
+
 ## 会話の流れ
 
 ### 1. Requirements Gathering
@@ -102,6 +108,31 @@
 6. root configuration files
 7. development environment config
 
+### 9. Development Session Recording System
+**User**: 私とあなたの会話記録をファイルに残すことってできますか？後から流れを追跡したり、他の開発者がClaudeさんへの依頼の仕方を見て学べるようにしたいです。
+
+**Claude**: 会話記録を残すアイデアを提案。`docs/dev-sessions/`ディレクトリでセッション別管理、日付別ファイル命名、会話内容・決定事項・技術メモを含む構造を提案。
+
+**User**: docs/dev-sessions/にセッション別に整理する方法にしたいです。以下の内容を含めたいです タイトル：会話を要約して簡潔に 会話内容の要約 会話内容全文：私のチャット内容原文と、Claudeさんの回答の要約 決定した重要な事項
+
+**Claude**: 要求仕様に基づいて初回セッション記録を作成。Markdown形式で構造化されたテンプレートを作成。
+
+**User**: この会話記録（チャットログ）を残す作業は今後も継続したいので、ルール化しましょう
+
+**Claude**: `docs/dev-session-guidelines.md`を作成し、記録タイミング、ファイル命名規則、文書構造、コンテンツガイドラインを策定。CONTRIBUTING.mdとCLAUDE.mdにも参照を追加。
+
+**User**: dev-sessionの見出しなどは日本語にしたいです。
+
+**Claude**: セッション記録の見出しを日本語に変更。「概要」「重要な決定事項」「会話の流れ」「作成・変更されたファイル」「次のステップ」「技術メモ」の構造に統一。
+
+**User**: dev-sessionsに書いてもらった資料なんですが、日付が間違っています。正しい日付を取得するためには、何かツールをいれる必要がありますか？
+
+**Claude**: `date`コマンドで正確な日付(2025-06-12)を取得し、ファイル名と内容を修正。特別なツールは不要。
+
+**User**: そうであれば、今後同じミスをしないように、ガイドラインにdateコマンドを使うことを記載しておいてください
+
+**Claude**: `docs/dev-session-guidelines.md`に`date +"%Y-%m-%d"`コマンドの使用を明記し、日付確認の手順を追加。
+
 ## 作成・変更されたファイル
 
 ### Configuration Files
@@ -121,6 +152,8 @@
 - `CONTRIBUTING.md` - コミット規約と開発ガイドライン
 - `CLAUDE.md` - Claude Code用開発ガイド
 - `docs/requirements.md` - プロジェクト要件仕様
+- `docs/dev-session-guidelines.md` - 開発セッション記録ガイドライン
+- `docs/dev-sessions/2025-06-12-project-initialization.md` - 初回セッション記録
 
 ### Environment Setup
 - `.gitignore` - Git除外設定
