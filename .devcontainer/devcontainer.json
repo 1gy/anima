@@ -11,6 +11,13 @@
 			"packages": "ripgrep"
 		}
 	},
+	"onCreateCommand": "/bin/bash .devcontainer/on-create.sh",
+	"mounts": [
+		"source=${localWorkspaceFolderBasename}-claude,target=/home/vscode/.local/share/claude,type=volume"
+	],
+	"remoteEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/vscode/.local/share/claude"
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
