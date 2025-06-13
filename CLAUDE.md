@@ -10,6 +10,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Check formatting**: `pnpm biome check`
 - **Format app package**: `pnpm -F @1gy/anima-app format`
 
+## Git Workflow
+
+For detailed branch strategy and development workflow:
+@docs/development-workflow.md
+
 ## Commit Convention
 
 Follow Conventional Commits format with English body text. See CONTRIBUTING.md for details.
@@ -44,3 +49,24 @@ For development session recording guidelines:
 
 For development workflow with Claude Code:
 @docs/development-workflow.md
+
+## Technical Documentation
+
+Architecture and design decisions:
+@docs/architecture.md
+
+Coding style and conventions:
+@docs/coding-style.md
+
+Testing strategy and guidelines:
+@docs/testing-strategy.md
+
+## Documentation Guidelines
+
+**All documentation should be discoverable from CLAUDE.md**
+
+When creating new documentation:
+1. Add reference links from CLAUDE.md to ensure discoverability
+2. Use `@path/to/file.md` format for references
+3. Group related documents under appropriate sections
+4. Especially important for documents containing Claude Code instructions

@@ -4,11 +4,40 @@
 
 Claude Codeとの開発セッションにおける標準的なワークフローを定義する。
 
+## Git Branch Strategy
+
+### Branch Types
+- **main**: プロダクション用ブランチ（常にデプロイ可能状態）
+- **feature/***: 機能開発用ブランチ（関連ドキュメントも含む）
+- **fix/***: バグ修正用ブランチ
+- **docs/***: 独立したドキュメント更新用ブランチ
+
+### Branch Naming Convention
+```
+feature/anime-comparison       # 機能開発
+feature/tier-list-ui          # UI機能
+fix/api-error-handling        # バグ修正
+docs/workflow-update          # 独立したドキュメント更新
+```
+
+### Development Flow with Branches
+1. **ブランチ作成**: `git checkout -b feature/feature-name`
+2. **開発・コミット**: 機能実装とドキュメント更新を同じブランチで
+3. **プルリクエスト作成**: GitHub上でPR作成
+4. **レビュー・マージ**: mainブランチにマージ後、ブランチ削除
+
+### Documentation Strategy
+- **機能関連ドキュメント**: 同じfeatureブランチに含める
+  - API仕様書、機能説明、README更新など
+- **独立したドキュメント**: 別途docs/*ブランチで管理
+  - 開発ルール変更、アーキテクチャ見直しなど
+
 ## Workflow Steps
 
 ### 1. Session Start
 - `TZ=Asia/Tokyo date +"%Y-%m-%d"`で現在日付を確認
 - セッションのトピック・目標を明確化
+- 必要に応じて新しいブランチを作成
 
 ### 2. Development Phase
 - **User**: 依頼内容・要件を明確に伝達
