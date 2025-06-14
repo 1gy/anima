@@ -8,7 +8,7 @@
 			"installPackages": "@anthropic-ai/claude-code ccusage"
 		},
 		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-			"packages": "ripgrep"
+			"packages": "ripgrep gh"
 		}
 	},
 	"onCreateCommand": "/bin/bash .devcontainer/on-create.sh",
