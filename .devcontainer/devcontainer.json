@@ -13,10 +13,11 @@
 	},
 	"onCreateCommand": "/bin/bash .devcontainer/on-create.sh",
 	"mounts": [
-		"source=${localWorkspaceFolderBasename}-claude,target=/home/vscode/.local/share/claude,type=volume"
+		"source=${localWorkspaceFolderBasename}-claude,target=/home/vscode/.claude,type=volume",
+		"source=${localWorkspaceFolderBasename}-pnpm,target=/home/vscode/.pnpm,type=volume"
 	],
 	"remoteEnv": {
-		"CLAUDE_CONFIG_DIR": "/home/vscode/.local/share/claude"
+		"CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
 	},
 	"customizations": {
 		"vscode": {
