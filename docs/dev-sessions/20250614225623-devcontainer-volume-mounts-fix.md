@@ -43,12 +43,29 @@ devcontainerのpnpmとClaude Code関連フォルダのマウントが正しく�
 - `.devcontainer/on-create.sh`: 新しいClaude設定ディレクトリに対応
 - `docs/dev-sessions/20250614225623-devcontainer-volume-mounts-fix.md`: セッション記録
 
+### 5. Copilotフィードバック対応
+**User**: プルリクエストにコメントがついてます。確認してもらえますか
+
+**Claude**: GitHub Copilotから2つの改善提案を確認：
+1. `on-create.sh`で`sudo`が不要（rootで実行されるため）
+2. pnpmディレクトリの初期化が不足
+
+**User**: 一旦修正してみてください。コミットする前に、このリポジトリでテストするので止めてください。
+
+**Claude**: Copilotの提案に従い`on-create.sh`を修正。`sudo`削除とpnpmディレクトリ初期化を追加。
+
+**User**: 確認しました。正しく動作するようなので続きをお願いします
+
+**Claude**: テスト完了確認後、修正をコミットしてプルリクエストを更新。
+
 ## 次のステップ
-- プルリクエスト #2 のレビューと対応
-- devcontainer再構築でのテスト確認
-- GitHub CLI認証済み環境でのワークフロー活用
+- プルリクエスト #2 のマージ準備完了
+- devcontainer設定の本格運用開始
+- GitHub CLI + Copilotレビューワークフローの活用
 
 ## 技術メモ
 - GitHub CLI認証フローが確立された
+- GitHub Copilotの自動レビュー機能が有効活用された
 - devcontainerのボリュームマウント戦略が改善された
 - pnpmキャッシュ永続化によりコンテナ再構築の高速化が期待される
+- rootで実行されるスクリプトでの`sudo`不要の学習
