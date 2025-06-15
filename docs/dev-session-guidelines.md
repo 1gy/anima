@@ -23,8 +23,26 @@ Development sessionの記録を残すことで、開発の流れと意思決定�
 
 ## File Naming Convention
 
+### **Directory Structure**
 ```
-docs/dev-sessions/YYYYMMDDhhmmss-session-topic.md
+docs/dev-sessions/
+├── issues/                    # Issue駆動セッション
+│   └── {issue-number}-{description}/
+│       └── YYYYMMDDhhmmss-{session-topic}.md
+└── consultations/             # 相談セッション
+    └── YYYYMMDDhhmmss-{topic}.md
+```
+
+### **Naming Rules**
+
+**Issue-driven Sessions:**
+```
+docs/dev-sessions/issues/{issue-number}-{description}/YYYYMMDDhhmmss-{session-topic}.md
+```
+
+**Consultation Sessions:**
+```
+docs/dev-sessions/consultations/YYYYMMDDhhmmss-{topic}.md
 ```
 
 **Date Format:**
@@ -32,9 +50,10 @@ docs/dev-sessions/YYYYMMDDhhmmss-session-topic.md
 - Always verify the current timestamp before creating session files
 
 **Examples:**
-- `20250612225623-project-initialization.md`
-- `20250613230000-anilist-api-integration.md`
-- `20250614230000-comparison-feature-implementation.md`
+- `issues/123-anime-comparison/20250615142900-api-investigation.md`
+- `issues/123-anime-comparison/20250616093000-ui-implementation.md`
+- `consultations/20250612225623-project-initialization.md`
+- `consultations/20250614230000-architecture-design.md`
 
 ## Document Structure
 
@@ -103,13 +122,50 @@ docs/dev-sessions/YYYYMMDDhhmmss-session-topic.md
 - 定期的に古いセッション記録を確認
 - 重要な情報を`docs/`の他のファイルに移行
 
+## Session Management Flow
+
+### **Consultation Session**
+```
+1. セッション開始: 相談・質問
+2. consultations/YYYYMMDDhhmmss-{topic}.md 作成
+3. 相談完了でセッション終了
+```
+
+### **Issue-driven Session**
+```
+1. Issue確認/作成 (#123)
+2. issues/123-{description}/ フォルダ作成
+3. README.md作成（Issue概要・進捗管理）
+4. YYYYMMDDhhmmss-{session-topic}.md作成
+5. 実装・セッション記録
+6. README.md更新（進捗・決定事項）
+```
+
+### **Consultation → Implementation**
+```
+1. consultations/でセッション開始
+2. 実装決定 → Issue作成
+3. 相談セッション終了・記録
+4. 新しいIssue駆動セッション開始
+5. 相互参照リンクで関連付け
+```
+
 ## Example Usage
 
+### Consultation Session
 ```markdown
 ### 1. API Integration Discussion
 **User**: AniList APIを使いたいのですが、どういう手順で統合すべきでしょうか？
 
 **Claude**: AniList APIの調査から始めることを提案。GraphQL endpointの確認、認証方法の調査、基本的なクエリの実装手順を説明。
+```
+
+### Issue-driven Session
+```markdown
+### 2. Feature Implementation Session
+**User**: Issue #123のアニメ比較機能を実装します
+
+**Claude**: issues/123-anime-comparison/20250615142900-api-investigation.mdを作成して実装を開始。GraphQL クライアントの設定から始めます。
 ```
 
 ## Benefits
