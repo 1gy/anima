@@ -1,0 +1,96 @@
+name: 🚀 Feature Request
+description: 新機能の開発・既存機能の拡張を提案する
+title: "feat: "
+labels: ["feature", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        新機能の開発・既存機能の拡張提案用テンプレートです。
+        実装したい機能について詳しく記載してください。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 📋 概要
+      description: 実装したい機能の概要を簡潔に説明してください
+      placeholder: |
+        例: AniList APIを使用してユーザー間のアニメ比較機能を実装する
+        例: 既存のアニメ比較機能を3人以上のユーザーに対応させる
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 🎯 背景・目的
+      description: この機能が必要な理由や解決したい課題を説明してください
+      placeholder: |
+        例: 
+        - アニメファン同士で共通の視聴作品を確認したい
+        - 趣味の合う友人を見つけやすくしたい
+        - MVPとして必要な機能
+        - 既存機能のユーザビリティ向上
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: ✅ 受け入れ条件
+      description: この機能が完成したと判断する条件をチェックリスト形式で記載してください
+      placeholder: |
+        - [ ] AniList User IDを入力できる
+        - [ ] 2人のユーザーの共通アニメリストが表示される
+        - [ ] 設定がlocalStorageに保存される
+        - [ ] エラーハンドリングが適切に実装されている
+        - [ ] レスポンシブデザインに対応している
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🔥 優先度
+      description: この機能の優先度を選択してください
+      options:
+        - 🔴 High - 必須機能
+        - 🟡 Medium - 重要だが後回し可能
+        - 🟢 Low - Nice to have
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: 🔧 技術的制約・要求
+      description: 技術的な制約事項や要求があれば記載してください
+      placeholder: |
+        例:
+        - AniList API GraphQLを使用
+        - React + jotai + TypeScript
+        - vanilla-extractでスタイリング
+        - Vitestでテスト必須
+
+  - type: textarea
+    id: related_issues
+    attributes:
+      label: 🔗 関連Issue・参考資料
+      description: 関連するIssueやPR、参考資料があれば記載してください
+      placeholder: |
+        関連Issue: #123, #456
+        参考資料: https://anilist.gitbook.io/anilist-apiv2-docs/
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: 📝 追加情報
+      description: その他、開発時に考慮すべき情報があれば記載してください
+      placeholder: |
+        例:
+        - UI/UXの参考サイト
+        - パフォーマンス要求
+        - 将来の拡張性について

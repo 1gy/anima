@@ -1,0 +1,108 @@
+name: ⚠️ Bug Report
+description: バグの報告・修正を提案する
+title: "fix: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグ報告・修正提案用テンプレートです。
+        発生している問題について詳しく記載してください。
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: ⚠️ バグの概要
+      description: 発生しているバグを簡潔に説明してください
+      placeholder: |
+        例: AniList APIから取得したデータが正しく表示されない
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: 📋 現在の動作（問題のある動作）
+      description: 実際に起きている問題の動作を詳しく説明してください
+      placeholder: |
+        例:
+        - ユーザーIDを入力してもアニメリストが表示されない
+        - エラーメッセージが表示される
+        - ページが正しく読み込まれない
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: ✅ 期待される動作
+      description: 本来はどのような動作をするべきかを説明してください
+      placeholder: |
+        例:
+        - 正しいユーザーIDを入力した場合、そのユーザーのアニメリストが表示される
+        - エラーが発生した場合、適切なエラーメッセージが表示される
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: 🔄 再現手順
+      description: バグを再現するための手順を詳しく記載してください
+      placeholder: |
+        1. アプリケーションを開く
+        2. ユーザーID入力フィールドに「testuser」と入力
+        3. 「比較」ボタンをクリック
+        4. エラーが発生する
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🔥 優先度
+      description: このバグの優先度を選択してください
+      options:
+        - 🔴 Critical - アプリが使用不可
+        - 🟠 High - 主要機能に影響
+        - 🟡 Medium - 一部機能に影響
+        - 🟢 Low - 軽微な問題
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 🖥️ 環境情報
+      description: バグが発生した環境について記載してください
+      placeholder: |
+        - ブラウザ: Chrome 120.0.0.0
+        - OS: Windows 11 / macOS 14.0 / Ubuntu 20.04
+        - デバイス: Desktop / Mobile
+
+  - type: textarea
+    id: error_messages
+    attributes:
+      label: ❌ エラーメッセージ・ログ
+      description: 関連するエラーメッセージやコンソールログがあれば記載してください
+      placeholder: |
+        例:
+        ```
+        TypeError: Cannot read property 'mediaList' of undefined
+        at ComparisonService.js:25
+        ```
+
+  - type: textarea
+    id: related_issues
+    attributes:
+      label: 🔗 関連Issue・参考資料
+      description: 関連するIssueやPR、参考資料があれば記載してください
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: 📝 追加情報
+      description: その他、バグ修正に役立つ情報があれば記載してください

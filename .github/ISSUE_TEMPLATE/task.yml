@@ -1,0 +1,122 @@
+name: ⚙️ Task
+description: 開発タスク・環境構築・技術調査などを管理する
+title: "chore: "
+labels: ["task", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        開発タスク管理用テンプレートです。
+        環境構築、技術調査、リファクタリングなどの作業について記載してください。
+
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: 📋 タスクの種類
+      description: 実行するタスクの種類を選択してください
+      options:
+        - 🔧 Setup - 環境構築・ツール導入
+        - 🔍 Investigation - 技術調査・検証
+        - 🔄 Refactoring - コードの整理・改善
+        - 📦 Dependencies - 依存関係の更新
+        - 🚀 CI/CD - 自動化・デプロイ設定
+        - 📊 Performance - パフォーマンス改善
+        - 🧹 Maintenance - メンテナンス作業
+        - 📚 Documentation - ドキュメント作成・更新
+        - 🔧 Other - その他
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 📋 作業の概要
+      description: 実行したい作業の概要を簡潔に説明してください
+      placeholder: |
+        例: AniList APIの制限事項を調査する
+        例: CI/CDパイプラインにテスト自動実行を追加する
+        例: 既存のコンポーネントをAtomic Designに再構成する
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 🎯 作業の理由・目的
+      description: この作業が必要な理由や目的を説明してください
+      placeholder: |
+        例:
+        - APIの利用制限を把握して適切な実装を行いたい
+        - コード品質を保証するため自動テストが必要
+        - コードの保守性を向上させたい
+        - 開発効率を改善したい
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: ✅ 完了条件
+      description: この作業が完了したと判断する条件をチェックリスト形式で記載してください
+      placeholder: |
+        - [ ] 調査結果が文書化されている
+        - [ ] 必要な設定ファイルが作成されている
+        - [ ] 動作確認が完了している
+        - [ ] ドキュメントが更新されている
+        - [ ] 関係者に共有されている
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🔥 優先度
+      description: この作業の優先度を選択してください
+      options:
+        - 🔴 High - 緊急・必須作業
+        - 🟡 Medium - 重要だが後回し可能
+        - 🟢 Low - 時間があるときに実行
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: 🔧 技術的制約・注意事項
+      description: 技術的な制約や注意すべき事項があれば記載してください
+      placeholder: |
+        例:
+        - 既存機能への影響を最小限にする
+        - 特定のバージョンとの互換性を保つ
+        - パフォーマンスへの影響を考慮する
+
+  - type: textarea
+    id: expected_outcome
+    attributes:
+      label: 📈 期待される成果
+      description: この作業によって得られる成果や改善点を記載してください
+      placeholder: |
+        例:
+        - 開発効率の向上
+        - コード品質の改善
+        - 技術的負債の解消
+        - 新機能開発の基盤整備
+
+  - type: textarea
+    id: related_issues
+    attributes:
+      label: 🔗 関連Issue・参考資料
+      description: 関連するIssueやPR、参考資料があれば記載してください
+      placeholder: |
+        関連Issue: #123, #456
+        参考資料: https://example.com/docs
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: 📝 追加情報
+      description: その他、作業実行時に考慮すべき情報があれば記載してください

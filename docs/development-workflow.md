@@ -37,7 +37,23 @@ docs/workflow-update          # 独立したドキュメント更新
 ### 1. Session Start
 - `TZ=Asia/Tokyo date +"%Y-%m-%d"`で現在日付を確認
 - セッションのトピック・目標を明確化
-- 必要に応じて新しいブランチを作成
+
+#### セッションタイプの判断
+```
+□ 今日何をしますか？
+  ├─ 相談・質問のみ → Issue不要セッション
+  └─ 何かを作る・変更する → Issue駆動セッション
+      ├─ 既存Issue → Issue番号確認・ブランチ作成
+      └─ 新規作業 → Issue作成・ブランチ作成
+```
+
+#### Issue駆動セッションの開始手順
+1. **Issue確認/作成**: GitHub Issue Templateを使用
+   - 🚀 Feature: 新機能・機能拡張
+   - ⚠️ Bug: バグ修正  
+   - ⚙️ Task: 開発タスク・環境構築・調査
+2. **ブランチ作成**: `git checkout -b {type}/{description}`
+3. **作業開始**: Issue内容に従って実装
 
 ### 2. Development Phase
 - **User**: 依頼内容・要件を明確に伝達
@@ -61,6 +77,16 @@ docs/workflow-update          # 独立したドキュメント更新
 - **Claude**: セッション記録をコミット
 
 ### 5. Session End
+
+#### Issue駆動セッションの完了手順
+1. **PR作成**: GitHub PR Templateを使用
+   - Issue番号を「Closes #123」形式で記載
+   - 変更内容・テスト結果を詳細に記載
+   - 適切なラベルを設定
+2. **Issue自動クローズ**: PRマージ時にIssueが自動でクローズ
+3. **ブランチ削除**: マージ後にfeatureブランチを削除
+
+#### 相談セッションの完了
 - 次回への引き継ぎ事項の確認
 - セッション完了の確認
 
@@ -131,24 +157,49 @@ docs/workflow-update          # 独立したドキュメント更新
 - [ ] 機能が期待通りに動作する
 - [ ] 破壊的変更がないか確認
 
-### Before Session End
+### Before Session End (Issue駆動セッション)
 - [ ] 全ての変更がコミット済み
 - [ ] セッション記録が作成済み
+- [ ] PRが作成済み（Issue番号含む）
+- [ ] Issue受け入れ条件が満たされている
+- [ ] 作業ツリーがクリーン (`git status`)
+
+### Before Session End (相談セッション)
+- [ ] セッション記録が作成済み（必要に応じて）
 - [ ] 次回の作業項目が明確
 - [ ] 作業ツリーがクリーン (`git status`)
 
 ## Example Session Flow
 
+### Issue駆動セッション例
 ```
 1. User: "AniList APIの統合を始めたいです"
-2. Claude: "AniList APIの調査から始めますか？GraphQL endpointと認証方法を確認しましょう"
-3. User: "はい、お願いします"
-4. Claude: [API調査・基本実装]
-5. User: "実装内容を確認しました。コミットしてください"
-6. Claude: [コミット実行]
-7. Claude: "セッション記録を作成します"
-8. Claude: [dev-session記録作成・コミット]
-9. User: "セッション完了です"
+2. Claude: "新しい機能ですね。まずIssueを作成しましょう"
+3. User: "Feature Issueを作成しました (#123)"
+4. Claude: "feature/anilist-api-integrationブランチを作成して開始します"
+5. Claude: [API調査・基本実装]
+6. User: "実装内容を確認しました。コミットしてください"
+7. Claude: [コミット実行]
+8. Claude: "PRを作成してIssue #123をクローズします"
+9. User: "PR内容を確認しました。マージしてください"
+```
+
+### 相談セッション例
+```
+1. User: "AniList APIの制限について教えて下さい"
+2. Claude: "AniList APIの制限について調査・説明します"
+3. User: "理解しました。ありがとうございます"
+4. User: "セッション完了です"
+```
+
+### 相談から実装に発展する例
+```
+1. User: "パフォーマンス改善のアプローチを相談したいです"
+2. Claude: "現状分析と改善案を提示します"
+3. User: "2番目の案で実装したいです"
+4. Claude: "Task Issueを作成しましょう"
+5. User: "Issue #456を作成しました"
+6. Claude: [同一セッション内でブランチ作成・実装継続]
 ```
 
 ## Benefits
