@@ -12,7 +12,6 @@ export const UserInputForm = ({
 	const [user2Id, setUser2Id] = useState("");
 	const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
-
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 

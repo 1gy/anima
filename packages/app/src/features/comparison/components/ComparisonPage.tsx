@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useAtom, useSetAtom } from "jotai";
+import { useState } from "react";
 import {
 	clearComparison$,
 	comparisonState$,
@@ -21,7 +21,7 @@ export const ComparisonPage = () => {
 
 	const handleClear = () => {
 		clearComparison();
-		setFormKey(prev => prev + 1); // Force form reset by remounting
+		setFormKey((prev) => prev + 1); // Force form reset by remounting
 	};
 
 	const hasResults = state.result || state.error;

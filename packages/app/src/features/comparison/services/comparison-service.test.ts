@@ -23,7 +23,7 @@ const createMockAnimeEntry = (
 		title: { romaji: title, english: title, native: title },
 		averageScore: 80 + id,
 	},
-	score,
+	...(score !== undefined && { score }),
 	status,
 });
 

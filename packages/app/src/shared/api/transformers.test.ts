@@ -20,7 +20,7 @@ const createMockAnimeMedia = (
 ): AnimeMedia => ({
 	id,
 	title: { romaji: title, english: `${title} EN`, native: `${title} JP` },
-	averageScore: score,
+	...(score !== undefined && { averageScore: score }),
 	coverImage: { medium: `https://example.com/${id}.jpg` },
 	episodes: 12,
 });

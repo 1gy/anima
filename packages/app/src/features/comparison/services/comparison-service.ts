@@ -11,9 +11,7 @@ export const calculateCommonAnime = (
 	user2Anime: AnimeList,
 ): readonly CommonAnime[] => {
 	// Optimize from O(n×m) to O(n+m) using Map for faster lookup
-	const user2Map = new Map(
-		user2Anime.map((entry) => [entry.media.id, entry]),
-	);
+	const user2Map = new Map(user2Anime.map((entry) => [entry.media.id, entry]));
 
 	const commonAnime: CommonAnime[] = [];
 
