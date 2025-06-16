@@ -29,7 +29,7 @@ export type AnimeMedia = {
 	readonly id: number;
 	readonly title: AnimeTitle;
 	readonly coverImage?: CoverImage;
-	readonly averageScore?: number | undefined;
+	readonly averageScore?: number;
 	readonly status?: MediaStatus;
 	readonly episodes?: number;
 	readonly genres?: readonly string[];
@@ -42,7 +42,7 @@ export type AnimeMedia = {
 
 export type AnimeListEntry = {
 	readonly media: AnimeMedia;
-	readonly score?: number | undefined;
+	readonly score?: number;
 	readonly status: ListStatus;
 	readonly progress?: number;
 	readonly updatedAt?: number;

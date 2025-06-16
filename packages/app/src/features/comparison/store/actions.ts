@@ -71,6 +71,9 @@ export const performComparison$ = atom(
 				user2Anime: user2Result.data,
 			});
 		} catch (error) {
+			// TODO: Improve error handling with more specific error types
+			// Consider distinguishing between network errors, parse errors, and other types
+			// for better user experience and debugging
 			set(setError$, {
 				type: "unknown_error",
 				message:
