@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";
 import * as styles from "./UserInputForm.css";
@@ -7,20 +7,11 @@ export const UserInputForm = ({
 	onSubmit,
 	isLoading = false,
 	error,
-	clearTrigger,
 }: UserInputFormProps) => {
 	const [user1Id, setUser1Id] = useState("");
 	const [user2Id, setUser2Id] = useState("");
 	const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
-	// Clear form when clearTrigger changes
-	useEffect(() => {
-		if (clearTrigger) {
-			setUser1Id("");
-			setUser2Id("");
-			setValidationErrors([]);
-		}
-	}, [clearTrigger]);
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();

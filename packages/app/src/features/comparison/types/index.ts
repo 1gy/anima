@@ -11,7 +11,6 @@ export type UserInputFormProps = {
 	readonly onSubmit: (userIds: readonly string[]) => void;
 	readonly isLoading?: boolean;
 	readonly error?: string | undefined;
-	readonly clearTrigger?: boolean;
 };
 
 export type ComparisonResultProps = {
