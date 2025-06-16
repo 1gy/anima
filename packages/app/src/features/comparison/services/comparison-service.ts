@@ -10,12 +10,15 @@ export const calculateCommonAnime = (
 	user1Anime: AnimeList,
 	user2Anime: AnimeList,
 ): readonly CommonAnime[] => {
+	// Optimize from O(n×m) to O(n+m) using Map for faster lookup
+	const user2Map = new Map(
+		user2Anime.map((entry) => [entry.media.id, entry]),
+	);
+
 	const commonAnime: CommonAnime[] = [];
 
 	for (const user1Entry of user1Anime) {
-		const user2Entry = user2Anime.find(
-			(entry) => entry.media.id === user1Entry.media.id,
-		);
+		const user2Entry = user2Map.get(user1Entry.media.id);
 
 		if (user2Entry) {
 			commonAnime.push({
