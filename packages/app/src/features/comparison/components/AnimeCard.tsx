@@ -6,19 +6,27 @@ export type AnimeCardProps = {
 	readonly commonAnime: CommonAnime;
 };
 
+// Move helper functions outside component to prevent re-creation on each render
+const formatScore = (score?: number): string => {
+	if (!score || score === 0) return "Not scored";
+	return score.toString();
+};
+
+const formatStatus = (status: string): string => {
+	return status.charAt(0) + status.slice(1).toLowerCase();
+};
+
+const createAnimeAltText = (title: string, averageScore?: number): string => {
+	const scoreText = averageScore
+		? `average score ${averageScore}`
+		: "not rated";
+	return `Cover image for ${title}, ${scoreText}`;
+};
+
 export const AnimeCard = ({ commonAnime }: AnimeCardProps) => {
 	const { anime, user1Entry, user2Entry } = commonAnime;
 	const title = getAnimeDisplayTitle(anime);
 	const imageUrl = getAnimeCoverImage(anime);
-
-	const formatScore = (score?: number): string => {
-		if (!score || score === 0) return "Not scored";
-		return score.toString();
-	};
-
-	const formatStatus = (status: string): string => {
-		return status.charAt(0) + status.slice(1).toLowerCase();
-	};
 
 	return (
 		<div className={styles.cardContainer}>
@@ -26,7 +34,7 @@ export const AnimeCard = ({ commonAnime }: AnimeCardProps) => {
 				<div className={styles.imageContainer}>
 					<img
 						src={imageUrl}
-						alt={`${title} cover`}
+						alt={createAnimeAltText(title, anime.averageScore)}
 						width={85}
 						height={120}
 						loading="lazy"
