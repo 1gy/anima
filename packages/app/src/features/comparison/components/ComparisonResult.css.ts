@@ -1,9 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
 export const resultContainer = style({
-	maxWidth: "800px",
+	maxWidth: "1400px", // Increased for wider screens
 	margin: "2rem auto",
 	padding: "2rem",
+	width: "100%",
 });
 
 export const summaryCard = style({
@@ -45,9 +46,20 @@ export const statValue = style({
 
 export const animeGrid = style({
 	display: "grid",
-	gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+	gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
 	gap: "1rem",
 	marginTop: "1rem",
+
+	"@media": {
+		"screen and (min-width: 768px)": {
+			gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+			gap: "1.5rem",
+		},
+		"screen and (min-width: 1024px)": {
+			gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+			gap: "2rem",
+		},
+	},
 });
 
 export const loadingContainer = style({

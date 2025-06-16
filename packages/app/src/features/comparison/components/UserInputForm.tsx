@@ -55,36 +55,42 @@ export const UserInputForm = ({
 
 	return (
 		<form onSubmit={handleSubmit} className={styles.formContainer}>
-			<div className={styles.fieldGroup}>
-				<label htmlFor="user1Id" className={styles.label}>
-					First AniList User ID
-				</label>
-				<input
-					id="user1Id"
-					type="text"
-					value={user1Id}
-					onChange={(e) => handleUser1Change(e.target.value)}
-					placeholder="Enter first user ID"
-					disabled={isLoading}
-					required
-					className={styles.input}
-				/>
-			</div>
+			<div className={styles.fieldsContainer}>
+				<div className={styles.fieldWrapper}>
+					<div className={styles.fieldGroup}>
+						<label htmlFor="user1Id" className={styles.label}>
+							First AniList User ID
+						</label>
+						<input
+							id="user1Id"
+							type="text"
+							value={user1Id}
+							onChange={(e) => handleUser1Change(e.target.value)}
+							placeholder="Enter first user ID"
+							disabled={isLoading}
+							required
+							className={styles.input}
+						/>
+					</div>
+				</div>
 
-			<div className={styles.fieldGroup}>
-				<label htmlFor="user2Id" className={styles.label}>
-					Second AniList User ID
-				</label>
-				<input
-					id="user2Id"
-					type="text"
-					value={user2Id}
-					onChange={(e) => handleUser2Change(e.target.value)}
-					placeholder="Enter second user ID"
-					disabled={isLoading}
-					required
-					className={styles.input}
-				/>
+				<div className={styles.fieldWrapper}>
+					<div className={styles.fieldGroup}>
+						<label htmlFor="user2Id" className={styles.label}>
+							Second AniList User ID
+						</label>
+						<input
+							id="user2Id"
+							type="text"
+							value={user2Id}
+							onChange={(e) => handleUser2Change(e.target.value)}
+							placeholder="Enter second user ID"
+							disabled={isLoading}
+							required
+							className={styles.input}
+						/>
+					</div>
+				</div>
 			</div>
 
 			{hasErrors && (
