@@ -61,6 +61,9 @@ Coding style and conventions:
 Testing strategy and guidelines:
 @docs/testing-strategy.md
 
+React hooks best practices and useEffect guidelines:
+@docs/react-hooks-guide.md
+
 ## Documentation Guidelines
 
 **All documentation should be discoverable from CLAUDE.md**
