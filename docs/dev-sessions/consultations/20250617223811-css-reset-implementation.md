@@ -99,8 +99,78 @@ globalStyle("*, *::before, *::after", {
 - **予測可能性**: コンポーネントが親からはみ出すことがない
 - **拡張性**: 新しいコンポーネントも自動的に恩恵を受ける
 
-### 学習ポイント
+## 追加実装: Pre-Commitプロセスの自動化
+
+### 6. Pre-Commit品質保証の自動化
+**User**: コミット前にformat/lint/typecheckをするルールは遵守したいんですが、どうしたらよいですか？
+
+**Claude**: npm scriptsでのワンコマンド化を提案。Git hooksは使わずに手動実行可能な仕組みを実装。
+
+**User**: git hooksは使いたくないです
+
+**Claude**: npm scriptsでワンコマンド化を実装：
+
+### 7. npm scripts実装
+**User**: npm scriptsでやりましょう
+
+**Claude**: `package.json`に品質チェックスクリプトを追加：
+- `pre-commit`: format → lint → typecheck → test を順次実行
+- CLAUDE.mdに必須プロセスとして明文化
+- 未使用のimportとhelper関数を削除
+
+## 追加で作成・変更されたファイル
+
+### 変更
+- `packages/app/package.json` - pre-commitスクリプト追加
+- `CLAUDE.md` - 必須pre-commitプロセスの明文化
+- `src/shared/design-system/index.ts` - 未使用helper関数削除
+- `src/features/comparison/components/ComparisonResult.styles.css.ts` - 未使用import削除
+- `src/features/comparison/components/UserInputForm.tsx` - 未使用import削除
+
+## Pre-Commit自動化の実装詳細
+
+### npm scriptsの追加
+```json
+{
+  "scripts": {
+    "format": "biome format . --write",
+    "lint": "biome lint .",
+    "typecheck": "tsc --noEmit", 
+    "check": "biome check .",
+    "test:run": "vitest run",
+    "pre-commit": "pnpm format && pnpm lint && pnpm typecheck && pnpm test:run"
+  }
+}
+```
+
+### CLAUDE.mdでの運用ルール明文化
+```bash
+# 必須: 全てのコミット前に実行
+pnpm -F @1gy/anima-app pre-commit
+```
+
+### 品質保証の仕組み
+- **順次実行**: format → lint → typecheck → test
+- **エラー時停止**: いずれかが失敗すると全体が止まる
+- **手動実行**: Git hooksではなく明示的なコマンド実行
+- **確実性**: 全ステップ成功後にコミット可能
+
+## 学習ポイント
+
+### 技術的学習
 - アドホックな修正は症状を隠すだけで根本解決にならない
 - 構造的な問題は設計レベルから見直す必要がある
 - CSS Resetは現代のWebアプリケーション開発の基礎
-- 品質保証プロセス（format/lint/typecheck）の重要性
+- npm scriptsによる品質保証プロセスの自動化
+
+### プロセス改善
+- Git hooksに頼らない手動実行による確実性
+- CLAUDE.mdでのルール明文化の重要性
+- ワンコマンドでの複数チェック実行
+- 開発者の意図的な品質確保行動の促進
+
+### 運用上の効果
+- **一貫性**: 全開発者が同じ品質チェックを実行
+- **効率性**: `pre-commit`一発で全チェック完了
+- **信頼性**: テスト含む包括的な品質保証
+- **透明性**: 何をチェックしているかが明確
