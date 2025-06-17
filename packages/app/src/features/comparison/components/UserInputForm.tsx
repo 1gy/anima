@@ -1,7 +1,22 @@
 import { type FormEvent, useState } from "react";
+import {
+	alertBase,
+	alertVariants,
+	buttonBase,
+	buttonSizes,
+	buttonVariants,
+	cardBase,
+	cardContent,
+	composeStyles,
+	formGroup,
+	inputBase,
+	inputStates,
+	label,
+	tokens,
+} from "../../../shared/design-system";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";
-import * as styles from "./UserInputForm.css";
+import * as styles from "./UserInputForm.styles.css";
 
 export const UserInputForm = ({
 	onSubmit,
@@ -54,61 +69,78 @@ export const UserInputForm = ({
 	const canSubmit = user1Id.trim() && user2Id.trim() && !isLoading;
 
 	return (
-		<form onSubmit={handleSubmit} className={styles.formContainer}>
-			<div className={styles.fieldsContainer}>
-				<div className={styles.fieldWrapper}>
-					<div className={styles.fieldGroup}>
-						<label htmlFor="user1Id" className={styles.label}>
-							First AniList User ID
-						</label>
-						<input
-							id="user1Id"
-							type="text"
-							value={user1Id}
-							onChange={(e) => handleUser1Change(e.target.value)}
-							placeholder="Enter first user ID"
-							disabled={isLoading}
-							required
-							className={styles.input}
-						/>
-					</div>
-				</div>
+		<div className={`${cardBase} ${styles.formContainer}`}>
+			<div className={cardContent}>
+				<form onSubmit={handleSubmit}>
+					<div className={styles.fieldsContainer}>
+						<div className={styles.fieldWrapper}>
+							<div className={formGroup}>
+								<label htmlFor="user1Id" className={label}>
+									First AniList User ID
+								</label>
+								<input
+									id="user1Id"
+									type="text"
+									value={user1Id}
+									onChange={(e) => handleUser1Change(e.target.value)}
+									placeholder="Enter first user ID"
+									disabled={isLoading}
+									required
+									className={composeStyles(
+										inputBase,
+										hasErrors ? inputStates.error : inputStates.default,
+									)}
+								/>
+							</div>
+						</div>
 
-				<div className={styles.fieldWrapper}>
-					<div className={styles.fieldGroup}>
-						<label htmlFor="user2Id" className={styles.label}>
-							Second AniList User ID
-						</label>
-						<input
-							id="user2Id"
-							type="text"
-							value={user2Id}
-							onChange={(e) => handleUser2Change(e.target.value)}
-							placeholder="Enter second user ID"
-							disabled={isLoading}
-							required
-							className={styles.input}
-						/>
+						<div className={styles.fieldWrapper}>
+							<div className={formGroup}>
+								<label htmlFor="user2Id" className={label}>
+									Second AniList User ID
+								</label>
+								<input
+									id="user2Id"
+									type="text"
+									value={user2Id}
+									onChange={(e) => handleUser2Change(e.target.value)}
+									placeholder="Enter second user ID"
+									disabled={isLoading}
+									required
+									className={composeStyles(
+										inputBase,
+										hasErrors ? inputStates.error : inputStates.default,
+									)}
+								/>
+							</div>
+						</div>
 					</div>
-				</div>
+
+					{hasErrors && (
+						<div
+							role="alert"
+							className={composeStyles(alertBase, alertVariants.error)}
+						>
+							{validationErrors.map((error) => (
+								<div key={error}>{error}</div>
+							))}
+							{error && <div>{error}</div>}
+						</div>
+					)}
+
+					<button
+						type="submit"
+						disabled={!canSubmit}
+						className={composeStyles(
+							buttonBase,
+							buttonVariants.primary,
+							buttonSizes.lg,
+						)}
+					>
+						{isLoading ? "Comparing..." : "Compare Anime Lists"}
+					</button>
+				</form>
 			</div>
-
-			{hasErrors && (
-				<div role="alert" className={styles.errorContainer}>
-					{validationErrors.map((error) => (
-						<div key={error}>{error}</div>
-					))}
-					{error && <div>{error}</div>}
-				</div>
-			)}
-
-			<button
-				type="submit"
-				disabled={!canSubmit}
-				className={styles.submitButton}
-			>
-				{isLoading ? "Comparing..." : "Compare Anime Lists"}
-			</button>
-		</form>
+		</div>
 	);
 };

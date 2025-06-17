@@ -1,6 +1,13 @@
 import { getAnimeCoverImage, getAnimeDisplayTitle } from "../../../shared/api";
+import {
+	cardBase,
+	cardContent,
+	cardHeader,
+	cardVariants,
+	composeStyles,
+} from "../../../shared/design-system";
 import type { CommonAnime } from "../../../shared/types";
-import * as styles from "./AnimeCard.css";
+import * as styles from "./AnimeCard.styles.css";
 
 export type AnimeCardProps = {
 	readonly commonAnime: CommonAnime;
@@ -29,48 +36,50 @@ export const AnimeCard = ({ commonAnime }: AnimeCardProps) => {
 	const imageUrl = getAnimeCoverImage(anime);
 
 	return (
-		<div className={styles.cardContainer}>
-			<div className={styles.cardHeader}>
-				<div className={styles.imageContainer}>
-					<img
-						src={imageUrl}
-						alt={createAnimeAltText(title, anime.averageScore)}
-						width={85}
-						height={120}
-						loading="lazy"
-						className={styles.animeImage}
-					/>
+		<div className={composeStyles(cardBase, cardVariants.hover)}>
+			<div className={cardContent}>
+				<div className={cardHeader}>
+					<div className={styles.imageContainer}>
+						<img
+							src={imageUrl}
+							alt={createAnimeAltText(title, anime.averageScore)}
+							width={85}
+							height={120}
+							loading="lazy"
+							className={styles.animeImage}
+						/>
+					</div>
+
+					<div>
+						<h3 className={styles.animeTitle}>{title}</h3>
+
+						{anime.averageScore && (
+							<div className={styles.averageScore}>
+								Average Score: {anime.averageScore}
+							</div>
+						)}
+					</div>
 				</div>
 
-				<div className={styles.cardContent}>
-					<h3 className={styles.animeTitle}>{title}</h3>
-
-					{anime.averageScore && (
-						<div className={styles.averageScore}>
-							Average Score: {anime.averageScore}
+				<div className={styles.userComparisonContainer}>
+					<div className={styles.userSection}>
+						<span className={styles.userLabel}>User 1:</span>
+						<div className={styles.userStat}>
+							Status: {formatStatus(user1Entry.status)}
 						</div>
-					)}
-				</div>
-			</div>
+						<div className={styles.userStat}>
+							Score: {formatScore(user1Entry.score)}
+						</div>
+					</div>
 
-			<div className={styles.userComparisonContainer}>
-				<div className={styles.userSection}>
-					<span className={styles.userLabel}>User 1:</span>
-					<div className={styles.userStat}>
-						Status: {formatStatus(user1Entry.status)}
-					</div>
-					<div className={styles.userStat}>
-						Score: {formatScore(user1Entry.score)}
-					</div>
-				</div>
-
-				<div className={styles.userSection}>
-					<span className={styles.userLabel}>User 2:</span>
-					<div className={styles.userStat}>
-						Status: {formatStatus(user2Entry.status)}
-					</div>
-					<div className={styles.userStat}>
-						Score: {formatScore(user2Entry.score)}
+					<div className={styles.userSection}>
+						<span className={styles.userLabel}>User 2:</span>
+						<div className={styles.userStat}>
+							Status: {formatStatus(user2Entry.status)}
+						</div>
+						<div className={styles.userStat}>
+							Score: {formatScore(user2Entry.score)}
+						</div>
 					</div>
 				</div>
 			</div>

@@ -1,11 +1,19 @@
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
 import {
+	buttonBase,
+	buttonSizes,
+	buttonVariants,
+	composeStyles,
+	pageLayout,
+	pageTitle,
+} from "../../../shared/design-system";
+import {
 	clearComparison$,
 	comparisonState$,
 	performComparison$,
 } from "../store";
-import * as styles from "./ComparisonPage.css";
+import * as styles from "./ComparisonPage.styles.css";
 import { ComparisonResult } from "./ComparisonResult";
 import { UserInputForm } from "./UserInputForm";
 
@@ -27,8 +35,8 @@ export const ComparisonPage = () => {
 	const hasResults = state.result || state.error;
 
 	return (
-		<div className={styles.pageContainer}>
-			<h1 className={styles.pageTitle}>Anime Comparison</h1>
+		<div className={pageLayout}>
+			<h1 className={pageTitle}>Anime Comparison</h1>
 
 			<UserInputForm
 				key={formKey}
@@ -45,13 +53,19 @@ export const ComparisonPage = () => {
 						error={state.error}
 					/>
 
-					<button
-						type="button"
-						onClick={handleClear}
-						className={styles.clearButton}
-					>
-						Clear Results
-					</button>
+					<div className={styles.clearButtonContainer}>
+						<button
+							type="button"
+							onClick={handleClear}
+							className={composeStyles(
+								buttonBase,
+								buttonVariants.secondary,
+								buttonSizes.md,
+							)}
+						>
+							Clear Results
+						</button>
+					</div>
 				</>
 			)}
 		</div>
