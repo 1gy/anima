@@ -7,12 +7,16 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"format": "biome check . --write",
+		"format": "biome format . --write",
+		"lint": "biome lint .",
+		"typecheck": "tsc --noEmit",
+		"check": "biome check .",
 		"test": "vitest",
 		"test:watch": "vitest --watch",
 		"test:coverage": "vitest --coverage",
 		"test:ui": "vitest --ui",
-		"test:run": "vitest run"
+		"test:run": "vitest run",
+		"pre-commit": "pnpm format && pnpm lint && pnpm typecheck && pnpm test:run"
 	},
 	"dependencies": {
 		"jotai": "^2.12.5",

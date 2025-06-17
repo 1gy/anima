@@ -12,7 +12,6 @@ import {
 	inputBase,
 	inputStates,
 	label,
-	tokens,
 } from "../../../shared/design-system";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";

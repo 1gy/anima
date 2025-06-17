@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { mediaQuery, tokens } from "../../../shared/design-system";
+import { tokens } from "../../../shared/design-system";
 
 export const pageContainer = style({
 	width: "100%",
