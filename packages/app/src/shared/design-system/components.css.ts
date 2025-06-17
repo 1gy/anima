@@ -94,7 +94,7 @@ export const buttonSizes = styleVariants({
 
 // Form component styles
 export const formGroup = style({
-	marginBottom: tokens.spacing["6"],
+	marginBottom: "0",
 });
 
 export const label = style({

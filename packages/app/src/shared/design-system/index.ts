@@ -1,3 +1,6 @@
+// Global reset styles (must be imported first)
+import "./reset.css";
+
 // Design tokens
 export { tokens, breakpoints, mediaQuery } from "./tokens.css";
 
