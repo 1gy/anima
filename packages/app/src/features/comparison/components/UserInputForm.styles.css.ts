@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { mediaQuery, tokens } from "../../../shared/design-system";
+import { mediaQuery, tokens } from "@1gy/anima-styles";
 
 export const formContainer = style({
 	maxWidth: "600px",

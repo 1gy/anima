@@ -7,7 +7,7 @@ import {
 	composeStyles,
 	pageLayout,
 	pageTitle,
-} from "../../../shared/design-system";
+} from "@1gy/anima-styles";
 import {
 	clearComparison$,
 	comparisonState$,

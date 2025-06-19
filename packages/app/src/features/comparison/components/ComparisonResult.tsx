@@ -8,7 +8,7 @@ import {
 	responsiveGrid,
 	spinner,
 	textVariants,
-} from "../../../shared/design-system";
+} from "@1gy/anima-styles";
 import { sortCommonAnimeByScore } from "../services";
 import type { ComparisonResultProps } from "../types";
 import { AnimeCard } from "./AnimeCard";

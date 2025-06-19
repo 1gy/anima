@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { tokens } from "../../../shared/design-system";
+import { tokens } from "@1gy/anima-styles";
 
 export const clearButtonContainer = style({
 	display: "flex",

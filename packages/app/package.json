@@ -19,6 +19,7 @@
 		"pre-commit": "pnpm format && pnpm lint && pnpm typecheck && pnpm test:run"
 	},
 	"dependencies": {
+		"@1gy/anima-styles": "workspace:*",
 		"jotai": "^2.12.5",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0"

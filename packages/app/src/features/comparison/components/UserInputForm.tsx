@@ -12,7 +12,7 @@ import {
 	inputBase,
 	inputStates,
 	label,
-} from "../../../shared/design-system";
+} from "@1gy/anima-styles";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";
 import * as styles from "./UserInputForm.styles.css";

@@ -5,7 +5,7 @@ import {
 	cardHeader,
 	cardVariants,
 	composeStyles,
-} from "../../../shared/design-system";
+} from "@1gy/anima-styles";
 import type { CommonAnime } from "../../../shared/types";
 import * as styles from "./AnimeCard.styles.css";
 
