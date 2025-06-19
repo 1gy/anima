@@ -48,8 +48,8 @@ export {
 } from "./components.css";
 
 // Components
-export { Button } from "./components";
-export type { ButtonProps } from "./components";
+export { Button, Input, Label, FormGroup } from "./components";
+export type { ButtonProps, InputProps, LabelProps, FormGroupProps } from "./components";
 
 // Utilities
 export { cx, composeStyles } from "./utils";

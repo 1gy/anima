@@ -1,10 +1,7 @@
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
 import {
-	buttonBase,
-	buttonSizes,
-	buttonVariants,
-	composeStyles,
+	Button,
 	pageLayout,
 	pageTitle,
 } from "@1gy/anima-styles";
@@ -54,17 +51,14 @@ export const ComparisonPage = () => {
 					/>
 
 					<div className={styles.clearButtonContainer}>
-						<button
+						<Button
 							type="button"
 							onClick={handleClear}
-							className={composeStyles(
-								buttonBase,
-								buttonVariants.secondary,
-								buttonSizes.md,
-							)}
+							variant="secondary"
+							size="md"
 						>
 							Clear Results
-						</button>
+						</Button>
 					</div>
 				</>
 			)}

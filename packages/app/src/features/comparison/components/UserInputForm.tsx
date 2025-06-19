@@ -2,16 +2,11 @@ import { type FormEvent, useState } from "react";
 import {
 	alertBase,
 	alertVariants,
-	buttonBase,
-	buttonSizes,
-	buttonVariants,
+	Button,
 	cardBase,
 	cardContent,
 	composeStyles,
-	formGroup,
-	inputBase,
-	inputStates,
-	label,
+	Input,
 } from "@1gy/anima-styles";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";
@@ -73,45 +68,31 @@ export const UserInputForm = ({
 				<form onSubmit={handleSubmit}>
 					<div className={styles.fieldsContainer}>
 						<div className={styles.fieldWrapper}>
-							<div className={formGroup}>
-								<label htmlFor="user1Id" className={label}>
-									First AniList User ID
-								</label>
-								<input
-									id="user1Id"
-									type="text"
-									value={user1Id}
-									onChange={(e) => handleUser1Change(e.target.value)}
-									placeholder="Enter first user ID"
-									disabled={isLoading}
-									required
-									className={composeStyles(
-										inputBase,
-										hasErrors ? inputStates.error : inputStates.default,
-									)}
-								/>
-							</div>
+							<Input
+								id="user1Id"
+								label="First AniList User ID"
+								type="text"
+								value={user1Id}
+								onChange={(e) => handleUser1Change(e.target.value)}
+								placeholder="Enter first user ID"
+								disabled={isLoading}
+								required
+								state={hasErrors ? "error" : "default"}
+							/>
 						</div>
 
 						<div className={styles.fieldWrapper}>
-							<div className={formGroup}>
-								<label htmlFor="user2Id" className={label}>
-									Second AniList User ID
-								</label>
-								<input
-									id="user2Id"
-									type="text"
-									value={user2Id}
-									onChange={(e) => handleUser2Change(e.target.value)}
-									placeholder="Enter second user ID"
-									disabled={isLoading}
-									required
-									className={composeStyles(
-										inputBase,
-										hasErrors ? inputStates.error : inputStates.default,
-									)}
-								/>
-							</div>
+							<Input
+								id="user2Id"
+								label="Second AniList User ID"
+								type="text"
+								value={user2Id}
+								onChange={(e) => handleUser2Change(e.target.value)}
+								placeholder="Enter second user ID"
+								disabled={isLoading}
+								required
+								state={hasErrors ? "error" : "default"}
+							/>
 						</div>
 					</div>
 
@@ -127,17 +108,14 @@ export const UserInputForm = ({
 						</div>
 					)}
 
-					<button
+					<Button
 						type="submit"
 						disabled={!canSubmit}
-						className={composeStyles(
-							buttonBase,
-							buttonVariants.primary,
-							buttonSizes.lg,
-						)}
+						variant="primary"
+						size="lg"
 					>
 						{isLoading ? "Comparing..." : "Compare Anime Lists"}
-					</button>
+					</Button>
 				</form>
 			</div>
 		</div>
