@@ -20,25 +20,27 @@ export const createHttpClient = () => {
 				...options,
 			});
 
-			if (!response.ok) {
-				return {
-					success: false,
-					error: {
-						type: "api_error",
-						message: `HTTP ${response.status}: ${response.statusText}`,
-						timestamp: Date.now(),
-					},
-				};
-			}
-
 			const data = (await response.json()) as GraphQLResponse<T>;
 
+			// Check for GraphQL errors first (more specific)
 			if (data.errors && data.errors.length > 0 && data.errors[0]) {
 				return {
 					success: false,
 					error: {
 						type: "api_error",
 						message: data.errors[0].message,
+						timestamp: Date.now(),
+					},
+				};
+			}
+
+			// Then check HTTP status for non-GraphQL errors
+			if (!response.ok) {
+				return {
+					success: false,
+					error: {
+						type: "api_error",
+						message: `HTTP ${response.status}: ${response.statusText}`,
 						timestamp: Date.now(),
 					},
 				};

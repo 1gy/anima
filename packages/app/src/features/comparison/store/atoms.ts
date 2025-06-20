@@ -23,16 +23,20 @@ export const comparisonResult$ = atom<ComparisonResult | undefined>((get) => {
 	const user2Id = get(user2Id$);
 	const user1Anime = get(user1Anime$);
 	const user2Anime = get(user2Anime$);
+	const error = get(error$);
+	const isLoading = get(isLoading$);
 
-	if (
-		!user1Id ||
-		!user2Id ||
-		user1Anime.length === 0 ||
-		user2Anime.length === 0
-	) {
+	// Don't show result if there's an error or still loading
+	if (error || isLoading) {
 		return undefined;
 	}
 
+	// Only return undefined if user IDs are missing (not yet fetched)
+	if (!user1Id || !user2Id) {
+		return undefined;
+	}
+
+	// Create comparison result even for empty lists (will show "No common anime")
 	return createComparisonResult(user1Id, user2Id, user1Anime, user2Anime);
 });
 
