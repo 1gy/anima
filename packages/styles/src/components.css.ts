@@ -297,6 +297,9 @@ export const pageLayout = style({
 	backgroundColor: tokens.colors.background.secondary,
 	padding: `${tokens.spacing["8"]} ${tokens.spacing["4"]}`,
 	boxSizing: "border-box",
+	width: "100%",
+	maxWidth: "100vw",
+	overflowX: "hidden",
 
 	"@media": {
 		[mediaQuery.md]: {

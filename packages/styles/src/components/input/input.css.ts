@@ -4,6 +4,7 @@ import { tokens } from "../../tokens.css";
 export const inputStyle = recipe({
 	base: {
 		width: "100%",
+		boxSizing: "border-box",
 		fontFamily: tokens.typography.fontFamily.primary,
 		fontSize: tokens.typography.fontSize.base,
 		color: tokens.colors.text.primary,
@@ -92,6 +93,8 @@ export const labelStyle = recipe({
 
 export const formGroupStyle = recipe({
 	base: {
+		width: "100%",
+		boxSizing: "border-box",
 		marginBottom: tokens.spacing["4"],
 	},
 	variants: {

@@ -2,8 +2,10 @@ import { style } from "@vanilla-extract/css";
 import { mediaQuery, tokens } from "@1gy/anima-styles";
 
 export const formContainer = style({
+	width: "100%",
 	maxWidth: "600px",
 	margin: "0 auto",
+	boxSizing: "border-box",
 
 	"@media": {
 		[mediaQuery.lg]: {
