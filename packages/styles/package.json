@@ -18,7 +18,8 @@
 		"test:component": "vitest --project=component --coverage.enabled=false",
 		"test:integration": "vitest --project=integration --coverage.enabled=false",
 		"test:fast": "vitest --project=unit --project=component --coverage.enabled=false",
-		"test:ci": "vitest run --reporter=json --coverage.reporter=json"
+		"test:ci": "vitest run --reporter=json --coverage.reporter=json",
+		"pre-commit": "pnpm format && pnpm typecheck && pnpm test:ci"
 	},
 	"dependencies": {
 		"react": "^19.1.0",

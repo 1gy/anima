@@ -1,25 +1,25 @@
-import type { InputHTMLAttributes, FC, ReactNode } from "react";
+import type { FC, InputHTMLAttributes, ReactNode } from "react";
 
 import { cx } from "../../utils";
-import { 
-	type InputVariants, 
-	type LabelVariants,
+import {
 	type FormGroupVariants,
-	inputStyle, 
-	labelStyle, 
-	formGroupStyle,
+	type InputVariants,
+	type LabelVariants,
 	errorTextStyle,
-	helperTextStyle
+	formGroupStyle,
+	helperTextStyle,
+	inputStyle,
+	labelStyle,
 } from "./input.css";
 
-export type InputProps = InputVariants & 
+export type InputProps = InputVariants &
 	Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "size"> & {
-	label?: string;
-	labelProps?: LabelVariants;
-	formGroupProps?: FormGroupVariants;
-	error?: string;
-	helperText?: string;
-};
+		label?: string;
+		labelProps?: LabelVariants;
+		formGroupProps?: FormGroupVariants;
+		error?: string;
+		helperText?: string;
+	};
 
 export type LabelProps = LabelVariants & {
 	children: ReactNode;
@@ -32,7 +32,7 @@ export type FormGroupProps = FormGroupVariants & {
 	className?: string;
 };
 
-export const Input: FC<InputProps> = ({ 
+export const Input: FC<InputProps> = ({
 	size,
 	state,
 	label,
@@ -42,7 +42,7 @@ export const Input: FC<InputProps> = ({
 	helperText,
 	id,
 	required,
-	...props 
+	...props
 }) => {
 	const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 	const finalState = error ? "error" : state;
@@ -71,40 +71,35 @@ export const Input: FC<InputProps> = ({
 				{label}
 			</Label>
 			{inputElement}
-			{error && (
-				<div className={cx(errorTextStyle())}>
-					{error}
-				</div>
-			)}
+			{error && <div className={cx(errorTextStyle())}>{error}</div>}
 			{helperText && !error && (
-				<div className={cx(helperTextStyle())}>
-					{helperText}
-				</div>
+				<div className={cx(helperTextStyle())}>{helperText}</div>
 			)}
 		</FormGroup>
 	);
 };
 
-export const Label: FC<LabelProps> = ({ 
-	children, 
-	required, 
-	className, 
-	...props 
+export const Label: FC<LabelProps> = ({
+	children,
+	required,
+	className,
+	htmlFor,
+	...props
 }) => {
 	const labelClassName = cx(labelStyle({ required }), className);
 
 	return (
-		<label className={labelClassName} {...props}>
+		<label className={labelClassName} htmlFor={htmlFor} {...props}>
 			{children}
 		</label>
 	);
 };
 
-export const FormGroup: FC<FormGroupProps> = ({ 
-	children, 
-	spacing, 
+export const FormGroup: FC<FormGroupProps> = ({
+	children,
+	spacing,
 	className,
-	...props 
+	...props
 }) => {
 	const formGroupClassName = cx(formGroupStyle({ spacing }), className);
 

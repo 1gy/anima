@@ -49,7 +49,12 @@ export {
 
 // Components
 export { Button, Input, Label, FormGroup } from "./components";
-export type { ButtonProps, InputProps, LabelProps, FormGroupProps } from "./components";
+export type {
+	ButtonProps,
+	InputProps,
+	LabelProps,
+	FormGroupProps,
+} from "./components";
 
 // Utilities
 export { cx, composeStyles } from "./utils";

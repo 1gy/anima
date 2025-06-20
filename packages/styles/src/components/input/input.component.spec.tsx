@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it } from "vitest";
 import "@testing-library/jest-dom/vitest";
 
-import { Input, Label, FormGroup } from "./input";
+import { FormGroup, Input, Label } from "./input";
 
 afterEach(() => {
 	cleanup();
@@ -12,7 +12,7 @@ afterEach(() => {
 describe("Input", () => {
 	it("should render basic input", () => {
 		render(<Input placeholder="Enter text" />);
-		
+
 		const input = screen.getByPlaceholderText("Enter text");
 		expect(input).toBeInTheDocument();
 		expect(input).toHaveAttribute("type", "text");
@@ -20,10 +20,10 @@ describe("Input", () => {
 
 	it("should render input with label", () => {
 		render(<Input label="Username" placeholder="Enter username" />);
-		
+
 		const label = screen.getByText("Username");
 		const input = screen.getByLabelText("Username");
-		
+
 		expect(label).toBeInTheDocument();
 		expect(input).toBeInTheDocument();
 		expect(input).toHaveAttribute("placeholder", "Enter username");
@@ -31,7 +31,7 @@ describe("Input", () => {
 
 	it("should show required indicator on label", () => {
 		render(<Input label="Email" required />);
-		
+
 		const label = screen.getByText(/Email/);
 		expect(label).toBeInTheDocument();
 		// The required asterisk is added via CSS ::after, so we can't test it directly
@@ -42,42 +42,48 @@ describe("Input", () => {
 
 	it("should display error message", () => {
 		render(<Input label="Email" error="Invalid email address" />);
-		
+
 		expect(screen.getByText("Invalid email address")).toBeInTheDocument();
 	});
 
 	it("should display helper text", () => {
-		render(<Input label="Password" helperText="Must be at least 8 characters" />);
-		
-		expect(screen.getByText("Must be at least 8 characters")).toBeInTheDocument();
+		render(
+			<Input label="Password" helperText="Must be at least 8 characters" />,
+		);
+
+		expect(
+			screen.getByText("Must be at least 8 characters"),
+		).toBeInTheDocument();
 	});
 
 	it("should not show helper text when error is present", () => {
 		render(
-			<Input 
-				label="Password" 
-				error="Password too short" 
-				helperText="Must be at least 8 characters" 
-			/>
+			<Input
+				label="Password"
+				error="Password too short"
+				helperText="Must be at least 8 characters"
+			/>,
 		);
-		
+
 		expect(screen.getByText("Password too short")).toBeInTheDocument();
-		expect(screen.queryByText("Must be at least 8 characters")).not.toBeInTheDocument();
+		expect(
+			screen.queryByText("Must be at least 8 characters"),
+		).not.toBeInTheDocument();
 	});
 
 	it("should handle user input", async () => {
 		const user = userEvent.setup();
 		render(<Input label="Username" />);
-		
+
 		const input = screen.getByLabelText("Username");
 		await user.type(input, "testuser");
-		
+
 		expect(input).toHaveValue("testuser");
 	});
 
 	it("should be disabled when disabled prop is true", () => {
 		render(<Input label="Username" disabled />);
-		
+
 		const input = screen.getByLabelText("Username");
 		expect(input).toBeDisabled();
 	});
@@ -86,7 +92,7 @@ describe("Input", () => {
 describe("Label", () => {
 	it("should render label with text", () => {
 		render(<Label>Test Label</Label>);
-		
+
 		expect(screen.getByText("Test Label")).toBeInTheDocument();
 	});
 
@@ -95,12 +101,12 @@ describe("Label", () => {
 			<>
 				<Label htmlFor="test-input">Test Label</Label>
 				<input id="test-input" />
-			</>
+			</>,
 		);
-		
+
 		const label = screen.getByText("Test Label");
 		const input = screen.getByLabelText("Test Label");
-		
+
 		expect(label).toBeInTheDocument();
 		expect(input).toBeInTheDocument();
 	});
@@ -112,9 +118,9 @@ describe("FormGroup", () => {
 			<FormGroup>
 				<Label>Test Label</Label>
 				<Input placeholder="Test Input" />
-			</FormGroup>
+			</FormGroup>,
 		);
-		
+
 		expect(screen.getByText("Test Label")).toBeInTheDocument();
 		expect(screen.getByPlaceholderText("Test Input")).toBeInTheDocument();
 	});

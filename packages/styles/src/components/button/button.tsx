@@ -3,18 +3,18 @@ import type { ButtonHTMLAttributes, FC, ReactNode } from "react";
 import { cx } from "../../utils";
 import { type ButtonVariants, buttonStyle } from "./button.css";
 
-export type ButtonProps = ButtonVariants & 
+export type ButtonProps = ButtonVariants &
 	Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> & {
-	children: ReactNode;
-	asChild?: boolean;
-};
+		children: ReactNode;
+		asChild?: boolean;
+	};
 
-export const Button: FC<ButtonProps> = ({ 
-	children, 
-	variant, 
-	size, 
+export const Button: FC<ButtonProps> = ({
+	children,
+	variant,
+	size,
 	asChild = false,
-	...props 
+	...props
 }) => {
 	const className = cx(buttonStyle({ variant, size }));
 
@@ -25,11 +25,7 @@ export const Button: FC<ButtonProps> = ({
 	}
 
 	return (
-		<button
-			type="button"
-			className={className}
-			{...props}
-		>
+		<button type="button" className={className} {...props}>
 			{children}
 		</button>
 	);
