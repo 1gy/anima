@@ -87,6 +87,54 @@ describe("Input", () => {
 		const input = screen.getByLabelText("Username");
 		expect(input).toBeDisabled();
 	});
+
+	it("should support different input types", () => {
+		const { rerender } = render(<Input type="password" placeholder="Password" />);
+		
+		let input = screen.getByPlaceholderText("Password");
+		expect(input).toHaveAttribute("type", "password");
+
+		rerender(<Input type="email" placeholder="Email" />);
+		input = screen.getByPlaceholderText("Email");
+		expect(input).toHaveAttribute("type", "email");
+
+		rerender(<Input placeholder="Default" />);
+		input = screen.getByPlaceholderText("Default");
+		expect(input).toHaveAttribute("type", "text");
+	});
+
+	it("should have proper accessibility attributes", () => {
+		render(<Input label="Email" error="Invalid email" helperText="Enter your email" />);
+
+		const input = screen.getByLabelText("Email");
+		expect(input).toHaveAttribute("aria-invalid", "true");
+		expect(input).toHaveAttribute("aria-describedby");
+		
+		const describedBy = input.getAttribute("aria-describedby");
+		expect(describedBy).toContain("error");
+		
+		// Error text should have matching ID
+		const errorText = screen.getByText("Invalid email");
+		expect(errorText).toHaveAttribute("id", describedBy);
+	});
+
+	it("should associate helper text with input via aria-describedby", () => {
+		render(<Input label="Password" helperText="Must be at least 8 characters" />);
+
+		const input = screen.getByLabelText("Password");
+		const helperText = screen.getByText("Must be at least 8 characters");
+		
+		const describedBy = input.getAttribute("aria-describedby");
+		expect(describedBy).toBeTruthy();
+		expect(helperText).toHaveAttribute("id", describedBy);
+	});
+
+	it("should not have aria-invalid when no error", () => {
+		render(<Input label="Username" />);
+
+		const input = screen.getByLabelText("Username");
+		expect(input).not.toHaveAttribute("aria-invalid");
+	});
 });
 
 describe("Label", () => {

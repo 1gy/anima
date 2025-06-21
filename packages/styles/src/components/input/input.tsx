@@ -42,19 +42,25 @@ export const Input: FC<InputProps> = ({
 	helperText,
 	id,
 	required,
+	type,
 	...props
 }) => {
 	const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
 	const finalState = error ? "error" : state;
+	const errorId = error ? `${inputId}-error` : undefined;
+	const helperTextId = helperText && !error ? `${inputId}-helper` : undefined;
+	const describedBy = [errorId, helperTextId].filter(Boolean).join(' ') || undefined;
 
 	const inputClassName = cx(inputStyle({ size, state: finalState }));
 
 	const inputElement = (
 		<input
 			id={inputId}
-			type="text"
+			type={type ?? "text"}
 			className={inputClassName}
 			required={required}
+			aria-invalid={finalState === "error" ? "true" : undefined}
+			aria-describedby={describedBy}
 			{...props}
 		/>
 	);
@@ -71,9 +77,9 @@ export const Input: FC<InputProps> = ({
 				{label}
 			</Label>
 			{inputElement}
-			{error && <div className={cx(errorTextStyle())}>{error}</div>}
+			{error && <div id={errorId} className={cx(errorTextStyle())}>{error}</div>}
 			{helperText && !error && (
-				<div className={cx(helperTextStyle())}>{helperText}</div>
+				<div id={helperTextId} className={cx(helperTextStyle())}>{helperText}</div>
 			)}
 		</FormGroup>
 	);
