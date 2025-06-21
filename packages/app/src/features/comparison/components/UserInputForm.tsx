@@ -5,7 +5,7 @@ import {
 	Button,
 	cardBase,
 	cardContent,
-	composeStyles,
+	cx,
 	Input,
 } from "@1gy/anima-styles";
 import { isValidUserId } from "../services";
@@ -97,10 +97,7 @@ export const UserInputForm = ({
 					</div>
 
 					{hasErrors && (
-						<div
-							role="alert"
-							className={composeStyles(alertBase, alertVariants.error)}
-						>
+						<div role="alert" className={cx(alertBase, alertVariants.error)}>
 							{validationErrors.map((error) => (
 								<div key={error}>{error}</div>
 							))}

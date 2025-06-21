@@ -4,7 +4,7 @@ import {
 	cardContent,
 	cardHeader,
 	cardVariants,
-	composeStyles,
+	cx,
 } from "@1gy/anima-styles";
 import type { CommonAnime } from "../../../shared/types";
 import * as styles from "./AnimeCard.styles.css";
@@ -36,7 +36,7 @@ export const AnimeCard = ({ commonAnime }: AnimeCardProps) => {
 	const imageUrl = getAnimeCoverImage(anime);
 
 	return (
-		<div className={composeStyles(cardBase, cardVariants.hover)}>
+		<div className={cx(cardBase, cardVariants.hover)}>
 			<div className={cardContent}>
 				<div className={cardHeader}>
 					<div className={styles.imageContainer}>

@@ -4,7 +4,7 @@ import {
 	cardBase,
 	cardContent,
 	cardTitle,
-	composeStyles,
+	cx,
 	responsiveGrid,
 	spinner,
 	textVariants,
@@ -30,10 +30,7 @@ export const ComparisonResult = ({
 
 	if (error) {
 		return (
-			<div
-				role="alert"
-				className={composeStyles(alertBase, alertVariants.error)}
-			>
+			<div role="alert" className={cx(alertBase, alertVariants.error)}>
 				<h3 className={cardTitle}>Error</h3>
 				<p>{error.message}</p>
 			</div>
@@ -50,7 +47,7 @@ export const ComparisonResult = ({
 
 	return (
 		<div className={styles.pageContainer}>
-			<div className={composeStyles(cardBase, styles.resultContainer)}>
+			<div className={cx(cardBase, styles.resultContainer)}>
 				<div className={cardContent}>
 					<h3 className={cardTitle}>Comparison Summary</h3>
 					<div className={styles.summaryStats}>

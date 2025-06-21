@@ -57,4 +57,4 @@ export type {
 } from "./components";
 
 // Utilities
-export { cx, composeStyles } from "./utils";
+export { cx } from "./utils";
