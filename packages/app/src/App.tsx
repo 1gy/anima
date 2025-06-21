@@ -1,10 +1,10 @@
-import { appContainer } from "./App.css";
+import * as styles from "./App.css";
+import { ComparisonPage } from "./features/comparison";
 
-export function App() {
+export const App = () => {
 	return (
-		<div className={appContainer}>
-			<h1>Anima</h1>
-			<p>アニメファンのためのWebアプリケーション</p>
+		<div className={styles.appContainer}>
+			<ComparisonPage />
 		</div>
 	);
-}
+};

@@ -5,10 +5,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 - **Install dependencies**: `pnpm install`
-- **Lint code**: `pnpm biome lint`
-- **Format code**: `pnpm biome format --write`
-- **Check formatting**: `pnpm biome check`
-- **Format app package**: `pnpm -F @1gy/anima-app format`
+- **Lint code**: `pnpm -F @1gy/anima-app lint`
+- **Format code**: `pnpm -F @1gy/anima-app format`
+- **Type check**: `pnpm -F @1gy/anima-app typecheck`
+- **Run tests**: `pnpm -F @1gy/anima-app test:run`
+- **Pre-commit check**: `pnpm -F @1gy/anima-app pre-commit`
+
+### Required Pre-Commit Process
+
+**ALWAYS run this command before any commit:**
+```bash
+pnpm -F @1gy/anima-app pre-commit
+```
+
+This command runs format → lint → typecheck → test in sequence.
+If any step fails, fix the issues before committing.
 
 ## Git Workflow
 
@@ -60,6 +71,9 @@ Coding style and conventions:
 
 Testing strategy and guidelines:
 @docs/testing-strategy.md
+
+React hooks best practices and useEffect guidelines:
+@docs/react-hooks-guide.md
 
 ## Documentation Guidelines
 
