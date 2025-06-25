@@ -5,11 +5,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 - **Install dependencies**: `pnpm install`
-- **Lint code**: `pnpm -F @1gy/anima-app lint`
-- **Format code**: `pnpm -F @1gy/anima-app format`
+- **Format code (includes lint + import organization)**: `pnpm -F @1gy/anima-app format`
 - **Type check**: `pnpm -F @1gy/anima-app typecheck`
 - **Run tests**: `pnpm -F @1gy/anima-app test:run`
 - **Pre-commit check**: `pnpm -F @1gy/anima-app pre-commit`
+
+### Code Quality Tools
+
+**Biome v2** handles code formatting, linting, and import organization:
+- Format command: `biome check --write .` (runs format + lint + import organizer)
+- Supports monorepo configuration with nested configurations
+- Import organizer automatically sorts and merges imports
 
 ### Required Pre-Commit Process
 
@@ -18,7 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 pnpm -F @1gy/anima-app pre-commit
 ```
 
-This command runs format → lint → typecheck → test in sequence.
+This command runs format → typecheck → test in sequence.
 If any step fails, fix the issues before committing.
 
 ## Git Workflow
@@ -39,14 +45,19 @@ Detailed description of the new feature in English
 
 ## Project Structure
 
-This is a pnpm monorepo workspace with Biome configured for linting and formatting.
+This is a pnpm monorepo workspace with Biome v2 configured for linting, formatting, and import organization.
 
 - Uses pnpm workspaces (configured in `pnpm-workspace.yaml`)
-- Biome handles linting, formatting, and import organization
+- **Biome v2**: Unified code quality tool (format + lint + import organizer)
+- **Monorepo support**: Root configuration with package-specific overrides
 - Configured for TypeScript/TSX files in `src/` directories
 - Package manager: pnpm@10.12.1
 
-The workspace is currently minimal with no packages defined yet.
+### Biome Configuration Structure
+
+- **Root**: `biome.jsonc` - Common rules and settings
+- **Packages**: Individual `biome.jsonc` files with `"extends": "//"` for inheritance
+- **File targeting**: Each package specifies its own `files.includes` patterns
 
 ## Project Information
 
