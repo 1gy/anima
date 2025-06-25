@@ -1,4 +1,3 @@
-import { type FormEvent, useState } from "react";
 import {
 	alertBase,
 	alertVariants,
@@ -8,6 +7,7 @@ import {
 	cx,
 	Input,
 } from "@1gy/anima-styles";
+import { type FormEvent, useId, useState } from "react";
 import { isValidUserId } from "../services";
 import type { UserInputFormProps } from "../types";
 import * as styles from "./UserInputForm.styles.css";
@@ -17,6 +17,8 @@ export const UserInputForm = ({
 	isLoading = false,
 	error,
 }: UserInputFormProps) => {
+	const user1InputId = useId();
+	const user2InputId = useId();
 	const [user1Id, setUser1Id] = useState("");
 	const [user2Id, setUser2Id] = useState("");
 	const [validationErrors, setValidationErrors] = useState<string[]>([]);
@@ -69,7 +71,7 @@ export const UserInputForm = ({
 					<div className={styles.fieldsContainer}>
 						<div className={styles.fieldWrapper}>
 							<Input
-								id="user1Id"
+								id={user1InputId}
 								label="First AniList User ID"
 								type="text"
 								value={user1Id}
@@ -83,7 +85,7 @@ export const UserInputForm = ({
 
 						<div className={styles.fieldWrapper}>
 							<Input
-								id="user2Id"
+								id={user2InputId}
 								label="Second AniList User ID"
 								type="text"
 								value={user2Id}
