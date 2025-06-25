@@ -2,13 +2,13 @@ import type { FC, InputHTMLAttributes, ReactNode } from "react";
 
 import { cx } from "../../utils";
 import {
-	type FormGroupVariants,
-	type InputVariants,
-	type LabelVariants,
 	errorTextStyle,
+	type FormGroupVariants,
 	formGroupStyle,
 	helperTextStyle,
+	type InputVariants,
 	inputStyle,
+	type LabelVariants,
 	labelStyle,
 } from "./input.css";
 
@@ -49,7 +49,8 @@ export const Input: FC<InputProps> = ({
 	const finalState = error ? "error" : state;
 	const errorId = error ? `${inputId}-error` : undefined;
 	const helperTextId = helperText && !error ? `${inputId}-helper` : undefined;
-	const describedBy = [errorId, helperTextId].filter(Boolean).join(' ') || undefined;
+	const describedBy =
+		[errorId, helperTextId].filter(Boolean).join(" ") || undefined;
 
 	const inputClassName = cx(inputStyle({ size, state: finalState }));
 
@@ -77,9 +78,15 @@ export const Input: FC<InputProps> = ({
 				{label}
 			</Label>
 			{inputElement}
-			{error && <div id={errorId} className={cx(errorTextStyle())}>{error}</div>}
+			{error && (
+				<div id={errorId} className={cx(errorTextStyle())}>
+					{error}
+				</div>
+			)}
 			{helperText && !error && (
-				<div id={helperTextId} className={cx(helperTextStyle())}>{helperText}</div>
+				<div id={helperTextId} className={cx(helperTextStyle())}>
+					{helperText}
+				</div>
 			)}
 		</FormGroup>
 	);

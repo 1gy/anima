@@ -1,2 +1,2 @@
-export { Input, Label, FormGroup } from "./input";
-export type { InputProps, LabelProps, FormGroupProps } from "./input";
+export type { FormGroupProps, InputProps, LabelProps } from "./input";
+export { FormGroup, Input, Label } from "./input";
