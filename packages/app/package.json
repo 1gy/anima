@@ -7,16 +7,14 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
-		"format": "biome format . --write",
-		"lint": "biome lint .",
 		"typecheck": "tsc --noEmit",
-		"check": "biome check .",
+		"format": "biome check --write .",
 		"test": "vitest",
 		"test:watch": "vitest --watch",
 		"test:coverage": "vitest --coverage",
 		"test:ui": "vitest --ui",
 		"test:run": "vitest run",
-		"pre-commit": "pnpm format && pnpm lint && pnpm typecheck && pnpm test:run"
+		"pre-commit": "pnpm format && pnpm typecheck && pnpm test:run"
 	},
 	"dependencies": {
 		"@1gy/anima-styles": "workspace:*",
@@ -25,7 +23,7 @@
 		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.0.5",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/react": "^16.3.0",
 		"@testing-library/user-event": "^14.6.1",

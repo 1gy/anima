@@ -3,11 +3,6 @@
 	"root": false,
 	"extends": "//",
 	"files": {
-		"includes": [
-			"src/**/*.ts",
-			"src/**/*.tsx",
-			".storybook/**/*.ts",
-			"*.config.ts"
-		]
+		"includes": ["src/**/*.ts", "src/**/*.tsx", "*.config.ts"]
 	}
 }
