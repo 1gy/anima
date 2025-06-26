@@ -1,4 +1,3 @@
-import { getAnimeCoverImage, getAnimeDisplayTitle } from "../../../shared/api";
 import {
 	cardBase,
 	cardContent,
@@ -6,6 +5,7 @@ import {
 	cardVariants,
 	cx,
 } from "@1gy/anima-styles";
+import { getAnimeCoverImage, getAnimeDisplayTitle } from "../../../shared/api";
 import type { CommonAnime } from "../../../shared/types";
 import * as styles from "./AnimeCard.styles.css";
 

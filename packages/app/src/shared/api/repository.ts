@@ -1,5 +1,5 @@
 import type { AnimeList, MediaListCollection, Result } from "../types";
-import { type HttpClient, createAniListClient } from "./client";
+import { createAniListClient, type HttpClient } from "./client";
 import {
 	type MediaListCollectionVariables,
 	USER_ANIME_LIST_QUERY,

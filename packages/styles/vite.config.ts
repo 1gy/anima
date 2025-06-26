@@ -1,11 +1,10 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from "vite";
-import { coverageConfigDefaults } from "vitest/config";
 
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
-// plugins
 import react from "@vitejs/plugin-react";
 import { powerAssert } from "rollup-plugin-power-assert";
+import { defineConfig } from "vite";
+import { coverageConfigDefaults } from "vitest/config";
 
 // https://vite.dev/config/
 export default defineConfig({

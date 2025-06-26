@@ -1,6 +1,6 @@
+import { Button, pageLayout, pageTitle } from "@1gy/anima-styles";
 import { useAtom, useSetAtom } from "jotai";
 import { useState } from "react";
-import { Button, pageLayout, pageTitle } from "@1gy/anima-styles";
 import {
 	clearComparison$,
 	comparisonState$,

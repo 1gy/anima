@@ -1,25 +1,14 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"files": {
-		"include": [
-			"src/**/*.ts",
-			"src/**/*.tsx",
-			"package.json",
-			"tsconfig.json",
-			"tsconfig.*.json",
-			"*.config.ts"
-		],
-		"ignore": []
-	},
+	"$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
-	"formatter": {
-		"enabled": true
+	"files": {
+		"includes": []
 	},
-	"organizeImports": {
+	"formatter": {
 		"enabled": true
 	},
 	"linter": {
@@ -32,6 +21,15 @@
 		"parser": {
 			"allowTrailingCommas": true,
 			"allowComments": true
+		}
+	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"recommended": true,
+			"source": {
+				"organizeImports": "on"
+			}
 		}
 	}
 }

@@ -2,8 +2,8 @@ export {
 	calculateCommonAnime,
 	calculateSimilarityScore,
 	createComparisonResult,
-	sortCommonAnimeByScore,
 	filterCommonAnimeByStatus,
+	sortCommonAnimeByScore,
 } from "./comparison-service";
 
 export {

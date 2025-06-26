@@ -1,9 +1,4 @@
 export { ComparisonPage } from "./components";
-export type {
-	ComparisonState,
-	UserInputFormProps,
-	ComparisonResultProps,
-} from "./types";
 export {
 	calculateCommonAnime,
 	calculateSimilarityScore,
@@ -11,3 +6,8 @@ export {
 	isValidUserId,
 	validateUserIds,
 } from "./services";
+export type {
+	ComparisonResultProps,
+	ComparisonState,
+	UserInputFormProps,
+} from "./types";

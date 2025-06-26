@@ -11,7 +11,7 @@
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybookbuild",
 		"typecheck": "tsc -b",
-		"format": "biome check . --write",
+		"format": "biome check --write .",
 		"test": "vitest --watch",
 		"test:ui": "vitest --ui",
 		"test:unit": "vitest --project=unit --coverage.enabled=false",
@@ -26,7 +26,7 @@
 		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
+		"@biomejs/biome": "2.0.5",
 		"@power-assert/runtime": "^0.2.1",
 		"@storybook/addon-a11y": "^9.0.12",
 		"@storybook/addon-docs": "^9.0.12",

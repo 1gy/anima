@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { useId } from "react";
 import { afterEach, describe, expect, it } from "vitest";
 import "@testing-library/jest-dom/vitest";
 
@@ -89,8 +90,10 @@ describe("Input", () => {
 	});
 
 	it("should support different input types", () => {
-		const { rerender } = render(<Input type="password" placeholder="Password" />);
-		
+		const { rerender } = render(
+			<Input type="password" placeholder="Password" />,
+		);
+
 		let input = screen.getByPlaceholderText("Password");
 		expect(input).toHaveAttribute("type", "password");
 
@@ -104,26 +107,34 @@ describe("Input", () => {
 	});
 
 	it("should have proper accessibility attributes", () => {
-		render(<Input label="Email" error="Invalid email" helperText="Enter your email" />);
+		render(
+			<Input
+				label="Email"
+				error="Invalid email"
+				helperText="Enter your email"
+			/>,
+		);
 
 		const input = screen.getByLabelText("Email");
 		expect(input).toHaveAttribute("aria-invalid", "true");
 		expect(input).toHaveAttribute("aria-describedby");
-		
+
 		const describedBy = input.getAttribute("aria-describedby");
 		expect(describedBy).toContain("error");
-		
+
 		// Error text should have matching ID
 		const errorText = screen.getByText("Invalid email");
 		expect(errorText).toHaveAttribute("id", describedBy);
 	});
 
 	it("should associate helper text with input via aria-describedby", () => {
-		render(<Input label="Password" helperText="Must be at least 8 characters" />);
+		render(
+			<Input label="Password" helperText="Must be at least 8 characters" />,
+		);
 
 		const input = screen.getByLabelText("Password");
 		const helperText = screen.getByText("Must be at least 8 characters");
-		
+
 		const describedBy = input.getAttribute("aria-describedby");
 		expect(describedBy).toBeTruthy();
 		expect(helperText).toHaveAttribute("id", describedBy);
@@ -145,12 +156,17 @@ describe("Label", () => {
 	});
 
 	it("should associate with input via htmlFor", () => {
-		render(
-			<>
-				<Label htmlFor="test-input">Test Label</Label>
-				<input id="test-input" />
-			</>,
-		);
+		const TestComponent = () => {
+			const inputId = useId();
+			return (
+				<>
+					<Label htmlFor={inputId}>Test Label</Label>
+					<input id={inputId} />
+				</>
+			);
+		};
+
+		render(<TestComponent />);
 
 		const label = screen.getByText("Test Label");
 		const input = screen.getByLabelText("Test Label");
